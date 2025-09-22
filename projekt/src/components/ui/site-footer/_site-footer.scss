@@ -1,0 +1,55 @@
+@use '../../../variables';
+
+.footer {
+    display: flex;
+    width: 80%;
+    padding: 2rem 2rem 4rem;
+    margin: 0 auto;
+    //justify-content: space-between;
+    gap: 8.3rem;
+    border-block-start: 1px solid variables.$color-border-light;
+
+    &__left-column {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+    }
+
+    &__logo-container {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+    }
+
+    &__logo-text {
+        font-size: 1.25rem;
+    }
+
+    &__social-media-list {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    &__icon {
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+
+    &__menu-container {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    &__heading {
+        font-size: 1rem;
+    }
+
+    &__menu {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+}

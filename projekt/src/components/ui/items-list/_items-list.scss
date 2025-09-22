@@ -1,0 +1,14 @@
+.items-list {
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    gap: 3rem;
+
+    &__error-message {
+        color: red;
+    }
+
+    &__heading {
+        font-size: 2rem;
+        font-weight: 400;
+    }
+}

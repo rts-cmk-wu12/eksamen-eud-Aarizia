@@ -1,0 +1,15 @@
+@use '../variables';
+
+.common_font {
+  font-family: var(--font-inter);
+}
+
+.common-color {
+  color: variables.$color-foreground-dark;
+}
+
+.front_page {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
