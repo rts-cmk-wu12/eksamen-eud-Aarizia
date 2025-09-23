@@ -8,9 +8,7 @@ export default async function frontPage() {
 
   const allListingsData = await getAllListings();
 
-  if (!allListingsData) {
-    error();
-  }
+  if (!allListingsData) error();
 
   return (
     <main className={`front-page ${styles.front_page}`}>

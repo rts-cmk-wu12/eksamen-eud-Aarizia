@@ -11,9 +11,9 @@ export default function Error({ error }) {
     }, [error]);
 
     return (
-        <>
+        <main>
             <h2>Der er desværre sket en fejl</h2>
             <p>Prøv igen senere</p>
-        </>
+        </main>
     )
 }

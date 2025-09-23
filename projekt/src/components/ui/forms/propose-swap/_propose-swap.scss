@@ -1,0 +1,35 @@
+@use '../../../../variables';
+
+.propose-swap {
+    
+    &__button {
+        padding: 0.5rem 1rem;
+        background-color: variables.$color-background-medium;
+        border: 1px solid variables.$color-border-medium;
+        border-radius: 0.5rem;
+        margin-block-start: 2rem;
+        font-size: 1.125rem;
+        width: fit-content;
+    
+        &:hover {
+            background-color: variables.$color-brand;
+            color: variables.$color-foreground-light;
+            border: 1px solid variables.$color-brand;
+            cursor: pointer;
+        }
+    }
+
+    &__overlay {
+        width: 100dvw;
+        height: 100dvh;
+        backdrop-filter: blur(2px);
+        position: fixed;
+            top: 0;
+            left: 0;
+        z-index: 10;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+

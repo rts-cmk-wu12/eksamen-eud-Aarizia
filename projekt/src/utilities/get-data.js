@@ -19,10 +19,38 @@ async function getData(endpoint) {
     }
 }
 
+async function getDataWithAuth(endpoint, options = {}) {
+
+    const API_URL = new URL(endpoint, 'http://localhost:4000/api/v1/');
+
+    try {
+        const response = await fetch(API_URL, options);
+
+        if (!response.ok) {
+            throw new Error('Der opstod en fejl.');
+        }
+
+        if (!response.headers.get('content-type').includes('application/json')) {
+            throw new Error('Body er ikke JSON.');
+        }
+
+        return await response.json();
+    } catch (error) {
+        throw error;
+    }
+}
+
 const getAllListings = () => getData('listings');
-const getSingleListing = (id) => getData(`/listings/${id}`)
+const getSingleListing = id => getData(`listings/${id}`);
+const getSingleUser = (id, accessToken) => getDataWithAuth(`users/${id}`, {
+    method: 'GET',
+    headers: {
+        Authorization: 'Bearer ' + accessToken
+    }
+});
 
 export {
     getAllListings,
-    getSingleListing
+    getSingleListing,
+    getSingleUser
 }

@@ -37,6 +37,12 @@
             border: 1px solid variables.$color-border-medium;
             border-radius: 0.5rem;
             margin-inline: 0.5rem;
+
+            &:hover {
+                background-color: variables.$color-brand;
+                color: variables.$color-foreground-light;
+                border: 1px solid variables.$color-brand;
+            }
         }
         
         &--dark-color {
@@ -46,6 +52,16 @@
             border: 1px solid variables.$color-brand;
             border-radius: 0.5rem;
             margin-inline-start: 0.5rem;
+
+            &:hover {
+                background-color: variables.$color-background-medium;
+                border: 1px solid variables.$color-border-medium;
+                color: variables.$color-brand;
+            }
         }
+    }
+
+    .active {
+        background-color: variables.$color-foreground-light;
     }
 }

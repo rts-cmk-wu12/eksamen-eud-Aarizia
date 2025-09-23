@@ -1,3 +1,5 @@
+import LoginForm from "@/components/ui/forms/login"
+
 export const metadata = {
   title: 'Login'
 }
@@ -5,6 +7,8 @@ export const metadata = {
 export default function loginPage() {
 
     return (
-        <h1>Login</h1>
+        <main className="login">
+          <LoginForm />
+        </main>
     )
 }

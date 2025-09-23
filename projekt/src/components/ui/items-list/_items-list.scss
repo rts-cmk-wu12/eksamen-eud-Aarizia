@@ -1,3 +1,5 @@
+@use '../../../variables';
+
 .items-list {
     display: grid;
     grid-template-columns: 30% 30% 30%;
@@ -11,4 +13,54 @@
         font-size: 2rem;
         font-weight: 400;
     }
+
+    &__pagination {
+        display: flex;
+        gap: 1rem;
+        align-self: center;
+
+        &-button {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            border: none;
+            background-color: transparent;
+            font-size: 1rem;
+            padding: 0.25rem 0.5rem;
+            border: 1px solid transparent;
+            border-radius: 0.5rem;
+
+            &:hover:enabled {
+                cursor: pointer;
+                background-color: variables.$color-background-medium;
+                border: 1px solid variables.$color-border-medium;
+                color: variables.$color-brand;
+            }
+        }
+
+        &-list {
+            display: flex;
+            gap: 0.5rem;
+
+            &-button {
+                padding: 0.25rem 0.5rem;
+                border-radius: 0.5rem;
+                background-color: transparent;
+                border: none;
+                font-size: 1rem;
+                border: 1px solid transparent;
+                
+                &:hover {
+                    cursor: pointer;
+                    background-color: variables.$color-background-medium;
+                    border: 1px solid variables.$color-border-medium;
+                }
+            }
+        }
+    }
+}
+.button-active {
+    background-color: variables.$color-brand;
+    color: variables.$color-foreground-light;
+    border: 1px solid variables.$color-brand;
 }
