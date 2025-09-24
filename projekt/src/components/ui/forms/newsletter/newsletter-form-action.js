@@ -1,6 +1,7 @@
 'use server';
 
-import z, { success } from "zod";
+import { revalidatePath } from "next/cache";
+import z from "zod";
 
 export default async function newsletterFormAction(prevState, formData) {
 
@@ -47,7 +48,17 @@ export default async function newsletterFormAction(prevState, formData) {
         })
     });
 
+    if (!response.ok) return {
+        success: false,
+        errors: ['There was an error at the server. Try again later'],
+        data: {
+            email
+        }
+    }
+
     if (response.status === 204) return {
         success: true
     }
+
+    //revalidatePath('http://localhost:3000/contact');
 }

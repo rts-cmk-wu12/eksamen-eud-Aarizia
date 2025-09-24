@@ -5,6 +5,8 @@ import Link from "next/link";
 import './_site-header.scss';
 import { usePathname } from "next/navigation";
 import LogoutForm from "../forms/logout";
+import styles from '../../../app/page.module.scss';
+import LoginForm from "../forms/login";
 
 export default function SiteHeader({ accessToken = null, userId = null }) {
 
@@ -26,7 +28,7 @@ export default function SiteHeader({ accessToken = null, userId = null }) {
             <nav className="header__menu">
                 <Link href='/' className={`header__menu-item ${pathname === '/' ? 'active' : ''}`}>Listings</Link>
                 <Link href='/contact' className={`header__menu-item ${pathname === '/contact' ? 'active' : ''}`}>Contact</Link>
-                {!accessToken && !userId && <Link href='/login' className="header__menu-item--medium-color">Sign in</Link>}
+                {!accessToken && !userId && <LoginForm />}
                 {!accessToken && !userId && <Link href='/register' className="header__menu-item--dark-color">Register</Link>}
                 {accessToken && userId && <LogoutForm />}
                 {accessToken && userId && <Link href='/profile' className="header__menu-item--dark-color">Profile</Link>}

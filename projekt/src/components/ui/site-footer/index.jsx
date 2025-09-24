@@ -22,24 +22,24 @@ export default function SiteFooter() {
                 </Link>
                 <ul className="footer__social-media-list">
                     <li>
-                        <Link href='#'>
+                        <Link href='https://x.com' passHref>
                             <FaXTwitter className="footer__icon" />
                         </Link>
                     </li>
                     <li>
-                        <Link href='#'>
+                        <Link href='https://www.instagram.com' passHref>
                             <FaInstagram className="footer__icon" />
                         </Link>
                     </li>
                     <li>
-                        <Link href='#'>
+                        <Link href='https://www.youtube.com' passHref>
                             <FaYoutube className="footer__icon" />
                         </Link>
                     </li>
                     <li>
-                        <Link href='#'>
-                            </Link>
-                        <FaLinkedin className="footer__icon" />
+                        <Link href='https://www.linkedin.com' passHref>
+                            <FaLinkedin className="footer__icon" />
+                        </Link>
                     </li>
                 </ul>
             </div>

@@ -31,6 +31,10 @@
         padding: 0.5rem;
         border-radius: 0.5rem;
 
+        &:hover {
+            background-color: variables.$color-foreground-light;
+        }
+
         &--medium-color {
             padding: 0.5rem 1rem;
             background-color: variables.$color-background-medium;

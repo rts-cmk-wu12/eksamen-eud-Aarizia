@@ -10,8 +10,11 @@ export const metadata = {
 export default async function profilePage() {
 
     const cookieStore = await cookies();
-    const accessToken = cookieStore.get('swaphub_access_token');
-    const userId = cookieStore.get('swaphub_user_id');
+    if (cookieStore.has('swaphub_access_token')) var accessToken = cookieStore.get('swaphub_access_token');
+    if (cookieStore.has('swaphub_user_id')) var userId = cookieStore.get('swaphub_user_id');
+     
+    //const accessToken = cookieStore.get('swaphub_access_token');
+    //const userId = cookieStore.get('swaphub_user_id');
     let userData = null;
     //console.log(userData);
 

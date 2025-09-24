@@ -1,6 +1,5 @@
 'use server';
 
-import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import z from "zod";
 
@@ -61,16 +60,20 @@ export default async function loginFormAction(prevState, formData) {
 
     cookieStore.set({
         name: 'swaphub_access_token',
-        value: data.token
+        value: data.token,
+        maxAge: 60*60
     });
 
     cookieStore.set({
         name: 'swaphub_user_id',
-        value: data.userId
+        value: data.userId,
+        maxAge: 60*60
     });
 
-
-    // overvej at skrive succes og giv dem et link, de kan trykke på, som redirecter
-    redirect('/');
-    
+    return {
+        success: true,
+        data: {
+            email
+        }
+    }
 }

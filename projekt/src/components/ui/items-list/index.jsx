@@ -21,7 +21,7 @@ export default function ItemsList({ allListingsData }) {
         return (
             <ul className="items-list">
                 {paginatedDisplayList.map(listing => (
-                    <li key={listing.id}>
+                    <li key={listing.id} className="items-list__item">
                         <ListingCard listing={listing} />
                     </li>
                 ))}

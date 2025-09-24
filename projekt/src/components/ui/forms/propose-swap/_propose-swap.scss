@@ -4,18 +4,34 @@
     
     &__button {
         padding: 0.5rem 1rem;
-        background-color: variables.$color-background-medium;
-        border: 1px solid variables.$color-border-medium;
-        border-radius: 0.5rem;
-        margin-block-start: 2rem;
         font-size: 1.125rem;
+        border-radius: 0.5rem;
         width: fit-content;
     
-        &:hover {
+    &--light {
+        background-color: variables.$color-background-medium;
+        border: 1px solid variables.$color-border-medium;
+        
+        &:hover:enabled {
+                cursor: pointer;
+                background-color: variables.$color-brand;
+                color: variables.$color-foreground-light;
+                border: 1px solid variables.$color-brand;
+            }
+        }
+        
+        &--dark {
+            align-self: self-end;
             background-color: variables.$color-brand;
             color: variables.$color-foreground-light;
             border: 1px solid variables.$color-brand;
-            cursor: pointer;
+            
+            &:hover:enabled {
+                cursor: pointer;
+                background-color: variables.$color-background-medium;
+                border: 1px solid variables.$color-border-medium;
+                color: variables.$color-brand;
+            }
         }
     }
 
@@ -30,6 +46,42 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        font-size: 1.125rem;
+    }
+
+    &__container {
+        max-width: 60%;
+        background-color: variables.$color-background-light;
+        padding: 2rem;
+        border-radius: 1rem;
+        border: 1px solid variables.$color-border-light;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    &__user-listings {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    &__button-container {
+        display: flex;
+        gap: 2rem;
+    }
+
+    &__text {
+        line-height: 3rem;
     }
 }
 
+.margin-top {
+    margin-block-start: 2rem;
+}
+
+.highlight {
+    background-color: variables.$color-foreground-light;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}

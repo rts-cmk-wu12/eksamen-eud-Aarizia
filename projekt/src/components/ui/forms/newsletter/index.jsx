@@ -5,7 +5,7 @@ import '../_form.scss';
 import newsletterFormAction from './newsletter-form-action';
 import { FaCheck } from "react-icons/fa";
 
-export default function NewsletterForm() {
+export default function NewsletterForm({ userData = null }) {
 
     const [formState, formAction, pending] = useActionState(newsletterFormAction);
 
@@ -25,7 +25,8 @@ export default function NewsletterForm() {
             <div>
                 <label className="form__label">
                     Email
-                    <input className="form__input" type="email" name="email" defaultValue={formState?.data?.email} />
+                    {userData && <input className="form__input" type="email" name="email" defaultValue={formState?.data?.email ? formState?.data?.email : userData.email} />}
+                    {!userData && <input className="form__input" type="email" name="email" defaultValue={formState?.data?.email} />}
                 </label>
                 <p className="form__error-message">{formState?.properties?.email?.errors}</p>
             </div>

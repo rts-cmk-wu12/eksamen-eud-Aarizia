@@ -52,6 +52,7 @@
                 
                 &:hover {
                     cursor: pointer;
+                    color: variables.$color-foreground-dark;
                     background-color: variables.$color-background-medium;
                     border: 1px solid variables.$color-border-medium;
                 }

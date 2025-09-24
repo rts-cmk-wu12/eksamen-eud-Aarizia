@@ -1,7 +1,7 @@
 'use server';
 
-import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 export default async function logoutFormAction(prevState, formData) {
 
@@ -9,5 +9,5 @@ export default async function logoutFormAction(prevState, formData) {
     cookieStore.delete('swaphub_access_token');
     cookieStore.delete('swaphub_user_id');
 
-    revalidatePath();
+    redirect('/');
 }

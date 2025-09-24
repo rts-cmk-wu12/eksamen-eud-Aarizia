@@ -29,6 +29,7 @@ export default function ProfileForm({ userData }) {
                 <label className="form__label">
                     Email
                     <input type="email" name='email' className="form__input" defaultValue={formState?.data?.email ? formState?.data?.email : userData.email} />
+                    {/* <input type="email" name='email' className="form__input" placeholder={userData.email} defaultValue={formState?.data?.email} /> */}
                     {formState?.properties?.email?.errors.map((error, index) => <p key={index} className="form__error-message">{error}</p>)}
                 </label>
             </div>
@@ -52,6 +53,7 @@ export default function ProfileForm({ userData }) {
                 <label className="form__label">
                     First name
                     <input type="text" name='firstname' className="form__input" defaultValue={formState?.data?.firstname ? formState?.data?.firstname : userData.firstname} />
+                    {/* <input type="text" name='firstname' className="form__input" placeholder={userData.firstname} defaultValue={formState?.data?.firstname} /> */}
                     <p className="form__error-message">{formState?.properties?.firstname?.errors}</p>
                 </label>
             </div>
@@ -59,6 +61,7 @@ export default function ProfileForm({ userData }) {
                 <label className="form__label">
                     Last name
                     <input type="text" name='lastname' className="form__input" defaultValue={formState?.data?.lastname ? formState?.data?.lastname : userData.lastname} />
+                    {/* <input type="text" name='lastname' className="form__input" placeholder={userData.lastname} defaultValue={formState?.data?.lastname} /> */}
                     <p className="form__error-message">{formState?.properties?.lastname?.errors}</p>
                 </label>
             </div>

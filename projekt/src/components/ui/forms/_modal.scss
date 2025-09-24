@@ -1,0 +1,72 @@
+@use '../../../variables';
+
+.modal {
+
+    &__overlay {
+        width: 100dvw;
+        height: 100dvh;
+        backdrop-filter: blur(2px);
+        position: fixed;
+            top: 0;
+            left: 0;
+        z-index: 10;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.125rem;
+    }
+
+    &__container {
+        max-width: 60%;
+        background-color: variables.$color-background-light;
+        padding: 2rem;
+        border-radius: 1rem;
+        border: 1px solid variables.$color-border-light;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    &__button {
+        padding: 0.5rem 1rem;
+        font-size: 1.125rem;
+        border-radius: 0.5rem;
+        width: fit-content;
+    
+        &--light {
+            background-color: variables.$color-background-medium;
+            border: 1px solid variables.$color-border-medium;
+            
+            &:hover:enabled {
+                    cursor: pointer;
+                    background-color: variables.$color-brand;
+                    color: variables.$color-foreground-light;
+                    border: 1px solid variables.$color-brand;
+                }
+            }
+            
+        &--dark {
+            align-self: self-end;
+            background-color: variables.$color-brand;
+            color: variables.$color-foreground-light;
+            border: 1px solid variables.$color-brand;
+            
+            &:hover:enabled {
+                cursor: pointer;
+                background-color: variables.$color-background-medium;
+                border: 1px solid variables.$color-border-medium;
+                color: variables.$color-brand;
+            }
+        }
+    }
+}
+
+.align-right {
+    align-self: self-end;
+}

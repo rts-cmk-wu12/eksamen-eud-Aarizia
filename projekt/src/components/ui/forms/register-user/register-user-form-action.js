@@ -99,14 +99,18 @@ export default async function registerUSerFormAction(prevState, formData) {
     const cookieStore = await cookies();
     cookieStore.set({
         name: 'swaphub_access_token',
-        value: tokenData.token
+        value: tokenData.token,
+        maxAge: 60*60
     });
 
     cookieStore.set({
         name: 'swaphub_user_id',
-        value: tokenData.userId
+        value: tokenData.userId,
+        maxAge: 60*60
     });
 
+    /* cookieStore.delete('swaphub_public'); */
+    //console.log('hello')
     return {
         success: true,
         data: {
