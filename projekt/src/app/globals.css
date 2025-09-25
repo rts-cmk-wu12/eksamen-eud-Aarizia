@@ -5,7 +5,8 @@
 }
 
 body {
-  max-width: 100dwv;
+  max-width: 100dvw;
+  min-width: 54rem;
 }
 
 main {
@@ -22,10 +23,3 @@ a {
 ul {
   list-style: none;
 }
-
-
-/* @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-} */

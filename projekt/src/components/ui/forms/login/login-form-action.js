@@ -1,5 +1,6 @@
 'use server';
 
+import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import z from "zod";
 
@@ -7,10 +8,11 @@ export default async function loginFormAction(prevState, formData) {
 
     const email = formData.get('email');
     const password = formData.get('password');
+    const pathname = formData.get('pathname');
 
     const schema = z.object({
-        email: z.string().min(1, {message: 'Email field has to be filled'}),
-        password: z.string().min(1, {message: 'Password field has to be filled'})
+        email: z.string().min(1, {message: 'Email field must be filled'}),
+        password: z.string().min(1, {message: 'Password must to be filled'})
     });
 
     const validated = schema.safeParse({
@@ -24,8 +26,6 @@ export default async function loginFormAction(prevState, formData) {
             email
         }
     }
-
-    //console.log(validated);
 
     // create access token
     const API_URL = 'http://localhost:4000/auth/token';
@@ -42,8 +42,6 @@ export default async function loginFormAction(prevState, formData) {
 
     const response = await fetch(API_URL, options);
 
-    //console.log(response);
-
     if (!response.ok) return {
         success: false,
         errors: ['Invalid login. Try again'],
@@ -53,8 +51,6 @@ export default async function loginFormAction(prevState, formData) {
     }
 
     const data = await response.json();
-
-    //console.log(data);
 
     const cookieStore = await cookies();
 
@@ -70,10 +66,17 @@ export default async function loginFormAction(prevState, formData) {
         maxAge: 60*60
     });
 
-    return {
-        success: true,
-        data: {
-            email
-        }
-    }
+    cookieStore.set({
+        name: 'swaphub_session_token',
+        value: true,
+        maxAge: 60*62
+    });
+
+    cookieStore.set({
+        name: 'swaphub_message_token',
+        value: 'login',
+        maxAge: 10
+    });
+
+    revalidatePath(`http://localhost:3000${pathname}`);
 }

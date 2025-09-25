@@ -42,41 +42,39 @@ function reducer(state, action) {
     }
 }
 
-export default function ProposeSwapComponent({ listingData, userData }) {
+export default function ProposeSwapComponent({ listingData, userData, userHasListings }) {
 
     const [state, dispatch] = useReducer(reducer, {
         showModal: false,
         modalState: 'select offer item',
         offerItem: null
     });
-    const [formState, formAction, pending] = useActionState(proposeSwapServerAction);    
+    const [formState, formAction, pending] = useActionState(proposeSwapServerAction);   
     let listingBelongsToCurrentUser = false;
     let userHasNoListings = false;
+
+    useEffect(() => {
+
+        if (!formState) return;
+        if (formState?.success && state.showModal) dispatch({ type: 'proposeSwapSuccess' });
+
+    }, [formState]);
 
     userData.listings?.map(listing => {
         if (listing.id === listingData.id) listingBelongsToCurrentUser = true;
     });
 
-    if (!userData.listings) userHasNoListings = true;
-
-    useEffect(() => {
-
-        if (!formState) return;
-
-        //console.log(formState);
-        if (formState?.success && state.showModal) dispatch({ type: 'proposeSwapSuccess' });
-
-    }, [formState]);
+    if (!userData.listings.length) userHasNoListings = true;
 
     return (
         <>
             {listingBelongsToCurrentUser && <>
                 <button className='propose-swap__button propose-swap__button--light' disabled>Propose a swap</button>
-                <p className='form__error-message'>This is your own item, so you can not propose a swap</p>
+                <p>This is your own item, so you can not propose a swap</p>
             </>}
             {userHasNoListings && <>
                 <button className='propose-swap__button propose-swap__button--light' disabled>Propose a swap</button>
-                <p className='form__error-message'>This is your own item, so you can not propose a swap</p>
+                <p>You currently have no listings to swap</p>
             </>}
             {!listingBelongsToCurrentUser && !userHasNoListings && <button className='propose-swap__button propose-swap__button--light' onClick={() => dispatch({ type: 'showModalSelectOfferItem'})}>Propose a swap</button>}
             {state.showModal && state.modalState === 'select offer item' && <div className='propose-swap__overlay'>
@@ -126,7 +124,7 @@ export default function ProposeSwapComponent({ listingData, userData }) {
                         <FaCheck className='form__success-icon' />
                         <p>Your swap request was successfully submitted</p>
                     </div>
-                    <button onClick={() => dispatch({ type: 'hideModal'})} className='propose-swap__button propose-swap__button--dark margin-top'>Close pop-up window</button>
+                    <button onClick={() => dispatch({ type: 'hideModal'})} className='propose-swap__button propose-swap__button--dark margin-top'>Continue</button>
                 </section>
             </div>}
         </>

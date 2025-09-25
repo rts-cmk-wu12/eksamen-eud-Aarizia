@@ -49,6 +49,7 @@ const getSingleUser = (id, accessToken) => getDataWithAuth(`users/${id}`, {
     }
 });
 
+
 export {
     getAllListings,
     getSingleListing,

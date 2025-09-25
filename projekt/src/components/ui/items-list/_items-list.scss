@@ -6,7 +6,8 @@
     gap: 3rem;
 
     &__error-message {
-        color: red;
+        color: variables.$color-error;
+        font-size: 1.125rem;
     }
 
     &__heading {

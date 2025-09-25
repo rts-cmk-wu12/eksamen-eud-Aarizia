@@ -3,10 +3,10 @@
 .footer {
     display: flex;
     width: 80%;
+    min-width: 44rem;
     padding: 2rem 2rem 4rem;
     margin: 0 auto;
-    //justify-content: space-between;
-    gap: 8.3rem;
+    justify-content: space-between;
     border-block-start: 1px solid variables.$color-border-light;
 
     &__left-column {

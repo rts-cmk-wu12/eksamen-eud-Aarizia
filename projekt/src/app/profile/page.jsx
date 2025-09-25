@@ -1,32 +1,15 @@
-import ProfileForm from "@/components/ui/forms/change-profile"
-import { getSingleUser } from "@/utilities/get-data";
-import { cookies } from "next/headers"
-import { notFound } from "next/navigation";
+import SiteHeader from "@/components/ui/site-header";
 
 export const metadata = {
-  title: 'Profile'
+    title: 'Profile'
 }
 
-export default async function profilePage() {
-
-    const cookieStore = await cookies();
-    if (cookieStore.has('swaphub_access_token')) var accessToken = cookieStore.get('swaphub_access_token');
-    if (cookieStore.has('swaphub_user_id')) var userId = cookieStore.get('swaphub_user_id');
-     
-    //const accessToken = cookieStore.get('swaphub_access_token');
-    //const userId = cookieStore.get('swaphub_user_id');
-    let userData = null;
-    //console.log(userData);
-
-    if (!userId || !accessToken) {
-        notFound();
-    }
-
-    if (userId && accessToken) userData = await getSingleUser(userId.value, accessToken.value);
+export default function profilePage() {
 
     return (
-        <main className="profile-page">
-            <ProfileForm userData={userData} />
+        <main>
+            <SiteHeader />
+            <p>Profile page</p>
         </main>
     )
 }

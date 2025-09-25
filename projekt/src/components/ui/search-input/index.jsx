@@ -36,9 +36,10 @@ export default function SearchInput({ allListingsData = [] }) {
 
         const {value} = event.target;
 
-        if (value.length === 0) {
+        if (!value) {
             setInputValueEmpty(true);
         }
+
 
         if (value !== '') {
             var filteredData = allListingsData.filter(
@@ -52,7 +53,7 @@ export default function SearchInput({ allListingsData = [] }) {
         }
 
         if (!filteredData?.length) {
-            setSearchErrorMessage('Din søgning gav ingen resultater. Prøv igen');
+            setSearchErrorMessage('Your search had to results. Try again');
         }
 
         setSearchResults(filteredData);
@@ -67,3 +68,5 @@ export default function SearchInput({ allListingsData = [] }) {
         </section>
     ) 
 }
+
+// search input koden er inspireret fra gennemgang i undervisningen på RTS

@@ -17,6 +17,7 @@
     }
 
     &__container {
+        min-width: 25rem;
         max-width: 60%;
         background-color: variables.$color-background-light;
         padding: 2rem;
@@ -52,7 +53,6 @@
             }
             
         &--dark {
-            align-self: self-end;
             background-color: variables.$color-brand;
             color: variables.$color-foreground-light;
             border: 1px solid variables.$color-brand;
@@ -61,12 +61,35 @@
                 cursor: pointer;
                 background-color: variables.$color-background-medium;
                 border: 1px solid variables.$color-border-medium;
-                color: variables.$color-brand;
+                color: variables.$color-foreground-dark;
             }
+        }
+        
+        &--disabled {
+            height: 2.375rem;
+            width: 6.0125rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: variables.$color-brand;
+            color: variables.$color-foreground-light;
         }
     }
 }
 
 .align-right {
     align-self: self-end;
+}
+
+.small-font {
+    font-size: 1rem;
+}
+
+.align-center {
+    display: flex;
+    align-items: center;
+}
+
+.margin-block-start {
+    margin-block-start: 2rem;
 }

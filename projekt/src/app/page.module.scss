@@ -14,6 +14,32 @@
   gap: 2rem;
 }
 
+.my_listings_page {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  &__heading {
+    font-size: 2rem;
+    font-weight: 400;
+  }
+
+  &__list {
+    display: grid;
+        grid-template-columns: 20% 20% 20% 20%;
+        display: flex;
+        gap: 2rem;
+
+        &_item {
+            max-width: 15rem;
+        }
+  }
+
+  &__error_message {
+    font-size: 1.125rem;
+  }
+}
+
 .not_found {
   display: flex;
   flex-direction: column;
@@ -28,4 +54,10 @@
         background-color: variables.$color-foreground-light;
       }
     }
+}
+
+.error {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }

@@ -1,21 +1,30 @@
 @use '../../../variables';
 
 .form {
-    max-width: 25rem;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    margin-block: 5.5rem;
-    padding: 1rem 1rem 2rem;
-    border: 1px solid variables.$color-border-light;
-    border-radius: 0.5rem;
-    font-size: 1.125rem;
+    padding-block-end: 1rem;
+    
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        font-size: 1.125rem;
+        border: 1px solid variables.$color-border-light;
+        margin-block: 5.5rem;
+        margin: 0 auto;
+        min-width: 25rem;
+        max-width: 60%;
+        padding: 1rem 1rem;
+        border-radius: 0.5rem;
+    }
 
     &__heading {
         font-size: 1.625rem;
         font-weight: 400;
-
+        text-align: center;
+        padding-block-end: 1rem;
     }
     
     &__label {
@@ -37,27 +46,76 @@
     }
 
     &__success {
-    
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+        padding-block: 1rem;
+
         &-container {
             display: flex;
-            align-items: center;
             gap: 0.5rem;
+            align-items: center;
         }
-
+        
         &-icon {
             color: variables.$color-succes;
             font-size: 1.5rem;
+
+            &--big {
+                font-size: 3rem;
+            }
+        }
+
+        &-text {
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        &-list {
+            width: 100%;
+            padding-block-start: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
+            &-item {
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+
+        &-span {
+            display: block;
         }
     }
 
     &__button {
-        padding: 0.5rem 1rem;
+        //padding: 0.5rem 1rem; ?
+        padding: 0.75rem;
         background-color: variables.$color-brand;
         color: variables.$color-foreground-light;
         border: 1px solid variables.$color-brand;
         border-radius: 0.5rem;
-        font-size: 1rem;
-
+        font-size: 1.125rem;
+        
+        &:hover {
+            background-color: variables.$color-background-medium;
+            border: 1px solid variables.$color-border-medium;
+            color: variables.$color-brand;
+            cursor: pointer;
+        }
+    }
+    
+    &__link {
+        padding: 0.75rem;
+        background-color: variables.$color-brand;
+        color: variables.$color-foreground-light;
+        border: 1px solid variables.$color-brand;
+        border-radius: 0.5rem;
+        font-size: 1.125rem;
+        margin-block-start: 2rem;
+        
         &:hover {
             background-color: variables.$color-background-medium;
             border: 1px solid variables.$color-border-medium;
@@ -67,36 +125,13 @@
     }
 
     &__loading {
-        max-width: 25rem;
-        margin: 0 auto;
-        margin-block: 5.5rem;
-        padding: 2rem 1rem 2rem;
-        border: 1px solid variables.$color-border-light;
-        border-radius: 0.5rem;
+        padding-block: 1rem;
         font-size: 1.125rem;
         text-align: center;
     }
 
-    &__button {
-        
-        &--medium-color {
-            font-size: 1rem;
-            padding: 0.5rem 1rem;
-            background-color: variables.$color-background-medium;
-            border: 1px solid variables.$color-border-medium;
-            border-radius: 0.5rem;
-            margin-inline: 0.5rem;
-
-            &:hover {
-                background-color: variables.$color-brand;
-                color: variables.$color-foreground-light;
-                border: 1px solid variables.$color-brand;
-                cursor: pointer;
-            }
-        }
-
-        &--disabled {
-            background-color: variables.$color-foreground-dark;
-        }
+    &__page-style {
+        min-width: 25rem;
+        max-width: 35%;
     }
 }

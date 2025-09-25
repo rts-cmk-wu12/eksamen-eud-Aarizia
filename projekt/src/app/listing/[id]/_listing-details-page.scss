@@ -35,25 +35,11 @@
         padding-block: 1rem 2rem;
     }
 
-    &__link-container {
+    &__button-container {
         display: flex;
         align-items: center;
-    }
-
-    &__link {
-        padding: 0.5rem;
-        border-radius: 0.5rem;
-        padding: 0.5rem 1rem;
-        background-color: variables.$color-background-medium;
-        border: 1px solid variables.$color-border-medium;
-        border-radius: 0.5rem;
-        margin-inline: 0.5rem;
-
-        &:hover {
-            background-color: variables.$color-brand;
-            color: variables.$color-foreground-light;
-            border: 1px solid variables.$color-brand;
-        }
+        gap: 0.5rem;
+        font-size: 1.125rem;
     }
 }
 

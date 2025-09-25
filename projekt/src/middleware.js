@@ -5,7 +5,7 @@ export default async function middleware(request) {
 
     const cookieStore = await cookies();
 
-    if (request.nextUrl.pathname === '/profile') {
+    if (request.nextUrl.pathname === '/my-listings') {
 
         if (!cookieStore.has('swaphub_access_token') || !cookieStore.has('swaphub_user_id')) {
 

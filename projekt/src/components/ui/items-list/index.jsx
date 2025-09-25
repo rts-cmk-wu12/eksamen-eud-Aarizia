@@ -1,7 +1,7 @@
 'use client';
 
 import { searchContext } from "@/components/providers/search-provider";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import ListingCard from "../listing-card";
 import './_items-list.scss';
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
@@ -10,7 +10,7 @@ export default function ItemsList({ allListingsData }) {
 
     const { searchResults, searchErrorMessage } = useContext(searchContext);
     const displayList = searchResults?.length ? searchResults : allListingsData;
-    const heading = searchResults?.length ? 'Search results' : 'All listings';
+    const heading = searchResults?.length ? 'Search Results' : 'All Listings';
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 6;
 
@@ -80,4 +80,4 @@ export default function ItemsList({ allListingsData }) {
 }
 
 // pagineringskode er inspireret af eksemplet på https://www.geeksforgeeks.org/reactjs/how-to-implement-pagination-in-react-using-hooks/
-// jeg har selv skrevet koden, som sætter aktiv sass class på det element, der svarer til den side, vi er på
+// jeg har selv skrevet koden, som sætter aktiv sass class (.active) på det element, der svarer til den side, vi er på

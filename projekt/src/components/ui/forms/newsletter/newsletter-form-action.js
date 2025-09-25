@@ -1,6 +1,5 @@
 'use server';
 
-import { revalidatePath } from "next/cache";
 import z from "zod";
 
 export default async function newsletterFormAction(prevState, formData) {
@@ -8,7 +7,7 @@ export default async function newsletterFormAction(prevState, formData) {
     const email = formData.get('email');
 
     const filledSchema = z.object({
-        email: z.string().min(1, {message: 'Email field has to be filled'})
+        email: z.string().min(1, {message: 'Email field must be filled'})
     });
 
     const filledValidated = filledSchema.safeParse({
@@ -37,7 +36,6 @@ export default async function newsletterFormAction(prevState, formData) {
     }
 
     // post request
-
     const response = await fetch('http://localhost:4000/api/v1/newsletter', {
         method: 'POST',
         headers: {
@@ -59,6 +57,4 @@ export default async function newsletterFormAction(prevState, formData) {
     if (response.status === 204) return {
         success: true
     }
-
-    //revalidatePath('http://localhost:3000/contact');
 }

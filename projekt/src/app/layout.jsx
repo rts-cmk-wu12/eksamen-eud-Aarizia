@@ -1,9 +1,8 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import './_layout.scss';
 import styles from './page.module.scss';
-import SiteHeader from "@/components/ui/site-header";
 import SiteFooter from "@/components/ui/site-footer";
-import { cookies } from "next/headers";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -19,19 +18,15 @@ export const metadata = {
   description: "En web-app for loppe entusiaster",
 };
 
-export default async function RootLayout({ children }) {
-
-  const cookieStore = await cookies();
-  const accessToken = cookieStore.get('swaphub_access_token');
-  const userId = cookieStore.get('swaphub_user_id');
+export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
       <body className={`${inter.variable} ${styles.common_font} ${styles.common_color}`}>
-        {accessToken && userId && <SiteHeader accessToken={accessToken.value} userId={userId.value} />}
-        {!accessToken && !userId && <SiteHeader />}
-        {children}
-        <SiteFooter />
+        <div className="wrapper">
+          {children}
+          <SiteFooter />
+        </div>
       </body>
     </html>
   );

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import './_listing-card.scss';
 
@@ -12,10 +11,7 @@ export default function ListingCard({ listing = {} }) {
                     className="listing-card__image" 
                     src={listing?.asset?.url} 
                     alt="image of listing"
-                    //fill
-                   /*  height={500}
-                    width={500} */
-                    />
+                />
                 <h3 className="listing-card__title">{listing.title}</h3>
             </article>
         </Link>

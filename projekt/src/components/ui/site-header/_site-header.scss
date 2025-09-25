@@ -2,13 +2,18 @@
 
 .header {
     width: 80%;
+    min-width: 44rem;
     margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    padding: 2rem;
-    font-size: 1rem;
-    font-weight: 400;
     border-block-end: 1px solid variables.$color-border-light;
+    //height: 11rem;
+    
+    &__menu-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 2rem;
+        font-size: 1rem;
+        font-weight: 400;
+    }
 
     &__logo-container {
         display: flex;
@@ -34,38 +39,27 @@
         &:hover {
             background-color: variables.$color-foreground-light;
         }
-
-        &--medium-color {
-            padding: 0.5rem 1rem;
-            background-color: variables.$color-background-medium;
-            border: 1px solid variables.$color-border-medium;
-            border-radius: 0.5rem;
-            margin-inline: 0.5rem;
-
-            &:hover {
-                background-color: variables.$color-brand;
-                color: variables.$color-foreground-light;
-                border: 1px solid variables.$color-brand;
-            }
-        }
-        
-        &--dark-color {
-            padding: 0.5rem 1rem;
-            background-color: variables.$color-brand;
-            color: variables.$color-foreground-light;
-            border: 1px solid variables.$color-brand;
-            border-radius: 0.5rem;
-            margin-inline-start: 0.5rem;
-
-            &:hover {
-                background-color: variables.$color-background-medium;
-                border: 1px solid variables.$color-border-medium;
-                color: variables.$color-brand;
-            }
-        }
     }
 
     .active {
         background-color: variables.$color-foreground-light;
+    }
+
+    &__warning {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        background-color: variables.$color-background-light;
+        border-block: 1px solid variables.$color-border-light;
+        
+        &-text {
+            color: variables.$color-error;
+        }
+
+        &-icon {
+            color: variables.$color-succes;
+        }
     }
 }
