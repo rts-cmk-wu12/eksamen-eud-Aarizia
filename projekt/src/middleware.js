@@ -13,3 +13,5 @@ export default async function middleware(request) {
         }
     }
 }
+
+// koden i denne fil er skrevet med inspiration fra undervisningen på RTS

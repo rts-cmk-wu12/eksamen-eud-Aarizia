@@ -6,6 +6,8 @@ import ListingCard from "@/components/ui/listing-card";
 import ProposeSwapComponent from "@/components/ui/forms/propose-swap";
 import LoginForm from "@/components/ui/forms/login";
 import SiteHeader from "@/components/ui/site-header";
+import getOtherListingsFromSameUser from "@/utilities/get-other-listings-from-same-user";
+import formatDate from "@/utilities/format-date";
 
 
 export async function generateMetadata({ params }) {
@@ -23,30 +25,28 @@ export default async function listingDetailsPage({ params }) {
     
     const {id} = await params;
     const listingData = await getSingleListing(id);
-    const AllListingsData = await getAllListings();
-    var accessTokenExpired = false;
-    var messageToken = null;
-    
-    const cookieStore = await cookies();
-    if (!cookieStore.has('swaphub_access_token') && !cookieStore.has('swaphub_user_id') && cookieStore.has('swaphub_session_token')) accessTokenExpired = true;
-    if (cookieStore.has('swaphub_message_token')) messageToken = cookieStore.get('swaphub_message_token');
-    if (cookieStore.has('swaphub_access_token')) var accessToken = cookieStore.get('swaphub_access_token');
-    if (cookieStore.has('swaphub_user_id')) var userId = cookieStore.get('swaphub_user_id');
+    const allListingsData = await getAllListings();
+    let accessTokenExpired = false;
+    let messageToken = null;
+    let allOtherListingsFromSameUser = null;
+    let listingCreationDate = null;
     
     if (!listingData) {
         notFound();
     }
+    
+    const cookieStore = await cookies();
+    if (cookieStore.has('swaphub_user_id')) var userId = cookieStore.get('swaphub_user_id');
+    if (cookieStore.has('swaphub_access_token')) var accessToken = cookieStore.get('swaphub_access_token');
+    if ((!cookieStore.has('swaphub_access_token') || !cookieStore.has('swaphub_user_id')) && cookieStore.has('swaphub_session_token')) accessTokenExpired = true;
+    if (cookieStore.has('swaphub_message_token')) messageToken = cookieStore.get('swaphub_message_token');
+    
 
     if (accessToken && userId) var userData = await getSingleUser(userId.value, accessToken.value);
 
-    var allOtherListingsFromCurrentListingUser = AllListingsData.filter(
-        listing => listing.userId === listingData.userId
-        && listing.id !== listingData.id
-    );
+    if (allListingsData) allOtherListingsFromSameUser = getOtherListingsFromSameUser(allListingsData, listingData);
 
-    if (allOtherListingsFromCurrentListingUser.length === 0) allOtherListingsFromCurrentListingUser = null;
-
-    const listingCreationDate = listingData.createdAt.split('T');
+    if (listingData?.createdAt) listingCreationDate = formatDate(listingData.createdAt);
 
     return (
         <main className='listing-details'>
@@ -55,7 +55,7 @@ export default async function listingDetailsPage({ params }) {
                 userId={userId ? userId : null} 
                 messageToken={messageToken ? messageToken.value : null} 
                 userData={userData ? userData : null} 
-                accessTokenExpired={accessTokenExpired} 
+                accessTokenExpired={accessTokenExpired}
             />
             <article className='listing-details__article'>
                 <img className="listing-details__image" src={listingData.asset?.url} alt="image of listing" />
@@ -64,7 +64,10 @@ export default async function listingDetailsPage({ params }) {
                     <p className='listing-details__text'>{listingData.description}</p>
                     <p className='listing-details__text listing-details__time'>On SwapHub since: {listingCreationDate[0]}</p>
                     {userId && accessToken ? 
-                        <ProposeSwapComponent listingData={listingData} userData={userData} />
+                        <ProposeSwapComponent 
+                            listingData={listingData} 
+                            userData={userData ? userData : null}
+                        />
                     :
                     <div className="listing-details__button-container">
                         <LoginForm biggerText={true} />
@@ -72,10 +75,10 @@ export default async function listingDetailsPage({ params }) {
                     </div>}
                 </div>
             </article>
-            {allOtherListingsFromCurrentListingUser?.length && <section className='other-items'>
+            {allOtherListingsFromSameUser && <section className='other-items'>
                 <h2 className='listing-details__heading'>Other items from this Swapper</h2>
                 <ul className='other-items__list'>
-                    {allOtherListingsFromCurrentListingUser.map(listing => {
+                    {allOtherListingsFromSameUser.map(listing => {
                         return (
                             <li key={listing.id} className="other-items__list-item">
                                 <ListingCard listing={listing} />

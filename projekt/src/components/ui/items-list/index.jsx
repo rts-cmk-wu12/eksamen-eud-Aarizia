@@ -81,3 +81,4 @@ export default function ItemsList({ allListingsData }) {
 
 // pagineringskode er inspireret af eksemplet på https://www.geeksforgeeks.org/reactjs/how-to-implement-pagination-in-react-using-hooks/
 // jeg har selv skrevet koden, som sætter aktiv sass class (.active) på det element, der svarer til den side, vi er på
+// den del af koden i denne fil, som omhandler søgning, er skrevet med inspiration fra undervisningen på RTS

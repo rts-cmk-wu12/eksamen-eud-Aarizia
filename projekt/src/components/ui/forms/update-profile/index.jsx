@@ -30,7 +30,7 @@ export default function UpdateProfileForm({ userData = null }) {
                         <p className='form__loading'>Loading...</p>
                     :
                         <>
-                            <form action={formAction} className='form'>
+                            <form action={formAction} noValidate className='form'>
                                 <div>
                                     <label className='form__label'>
                                         Email
@@ -78,17 +78,19 @@ export default function UpdateProfileForm({ userData = null }) {
             </div>}
             {modalState === 'updateProfileSuccess' && <div className='modal__overlay'>
                 <section className="modal__container align-center">
-                    <div className="form__success-container">
-                        <FaCheck className="form__success-icon" />
-                        <p>Your profile was successfully updated</p>
+                    <FaCheck className="form__success-icon form__success-icon--big" />
+                    <p>Your profile was successfully updated</p>
+                    <div className='form__success-list'>
+                            <span>Name: </span>
+                            <span>{formState?.data?.firstname} {formState?.data?.lastname}</span>
+                            <span>Email: </span>
+                            <span>{formState?.data?.email}</span>
                     </div>
-                    <ul className='form__success-list'>
-                        <li className='form__success-list-item'><span>Email: </span><span>{formState?.data?.email}</span></li>
-                        <li className='form__success-list-item'><span>Name: </span><span>{formState?.data?.firstname} {formState?.data?.lastname}</span></li>
-                    </ul>
                     <button className="modal__button modal__button--dark align-right margin-block-start" onClick={() => setModalState('hideModal')}>Continue</button>
                 </section>
             </div>}
         </>
     )
 }
+
+// koden i denne fil er skrevet med inspiration fra undervisningen på RTS

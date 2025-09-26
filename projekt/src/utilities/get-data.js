@@ -55,3 +55,5 @@ export {
     getSingleListing,
     getSingleUser
 }
+
+// koden i denne fil er skrevet med inspiration fra undervisningen på RTS

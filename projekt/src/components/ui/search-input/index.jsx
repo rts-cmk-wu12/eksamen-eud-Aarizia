@@ -69,4 +69,4 @@ export default function SearchInput({ allListingsData = [] }) {
     ) 
 }
 
-// search input koden er inspireret fra gennemgang i undervisningen på RTS
+// koden i denne fil er skrevet med inspiration fra undervisningen på RTS

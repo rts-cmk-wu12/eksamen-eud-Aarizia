@@ -9,12 +9,11 @@ export default function SearchProvider( {children} ) {
     const [searchResults, setSearchResults] = useState([]);
     const [searchErrorMessage, setSearchErrorMessage] = useState('');
 
-    //console.log('search results: ', searchResults);
-    //console.log('search error: ', searchErrorMessage)
-
     return (
         <searchContext.Provider value={{ searchResults, setSearchResults, searchErrorMessage, setSearchErrorMessage }}>
             {children}
         </searchContext.Provider>
     )
 } 
+
+// koden i denne fil er skrevet med inspiration fra undervisningen på RTS

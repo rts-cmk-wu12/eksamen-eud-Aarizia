@@ -65,3 +65,5 @@ export default async function proposeSwapServerAction (prevState, formData) {
         success: true
     }
 }
+
+// koden i denne fil er skrevet med inspiration fra undervisningen på RTS

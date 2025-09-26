@@ -13,7 +13,7 @@ export default async function logoutFormAction(prevState, formData) {
     cookieStore.set({
         name: 'swaphub_message_token',
         value: 'logout',
-        maxAge: 10
+        maxAge: 5
     });
 
     redirect(`http://localhost:3000`);

@@ -42,7 +42,7 @@ function reducer(state, action) {
     }
 }
 
-export default function ProposeSwapComponent({ listingData, userData, userHasListings }) {
+export default function ProposeSwapComponent({ listingData, userData }) {
 
     const [state, dispatch] = useReducer(reducer, {
         showModal: false,
@@ -80,7 +80,7 @@ export default function ProposeSwapComponent({ listingData, userData, userHasLis
             {state.showModal && state.modalState === 'select offer item' && <div className='propose-swap__overlay'>
                 <section className='propose-swap__container'>
                         {userData.listings.length ? <>
-                            <p>Select which of your items you want to swap for {listingData.title}</p>
+                            <p>Select which of your items you want to swap for <span className='highlight'>{listingData.title}</span></p>
                             <ul className='propose-swap__user-listings'>
                                 {userData.listings.map(listing => {
                                     return (
@@ -130,3 +130,5 @@ export default function ProposeSwapComponent({ listingData, userData, userHasLis
         </>
     )
 }
+
+// koden i denne fil er skrevet med inspiration fra undervisningen på RTS

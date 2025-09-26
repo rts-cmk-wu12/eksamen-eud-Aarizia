@@ -71,10 +71,6 @@ export default async function registerUSerFormAction(prevState, formData) {
         }
     }
 
-    // tjek om det virker uden userData
-    //const userData = await userResponse.json();
-    //console.log(userData);
-
     // create access token:
     const API_URL = 'http://localhost:4000/auth/token';
     const options = {
@@ -119,13 +115,13 @@ export default async function registerUSerFormAction(prevState, formData) {
     cookieStore.set({
         name: 'swaphub_session_token',
         value: true,
-        maxAge: 60*62
+        maxAge: 60*61
     });
 
     cookieStore.set({
         name: 'swaphub_message_token',
         value: 'register',
-        maxAge: 10
+        maxAge: 5
     });
     
     /* return {
@@ -137,3 +133,5 @@ export default async function registerUSerFormAction(prevState, formData) {
 
     revalidatePath(`http://localhost:3000${pathname}`);
 }
+
+// koden i denne fil er skrevet med inspiration fra min terminsprøve

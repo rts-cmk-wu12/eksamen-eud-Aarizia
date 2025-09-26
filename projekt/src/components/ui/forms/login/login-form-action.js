@@ -69,14 +69,16 @@ export default async function loginFormAction(prevState, formData) {
     cookieStore.set({
         name: 'swaphub_session_token',
         value: true,
-        maxAge: 60*62
+        maxAge: 60*61
     });
 
     cookieStore.set({
         name: 'swaphub_message_token',
         value: 'login',
-        maxAge: 10
+        maxAge: 5
     });
 
     revalidatePath(`http://localhost:3000${pathname}`);
 }
+
+// koden i denne fil er skrevet med inspiration fra undervisningen på RTS

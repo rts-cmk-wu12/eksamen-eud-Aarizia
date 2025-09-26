@@ -84,3 +84,5 @@ export default function RegisterUserForm({ error = false }) {
         </>
     )
 }
+
+// koden i denne fil er skrevet med inspiration fra min terminsprøve og undervisningen på RTS

@@ -61,3 +61,5 @@ export default function LoginForm({ biggerText = null, error = null }) {
         </>
     ) 
 }
+
+// koden i denne fil er skrevet med inspiration fra undervisningen på RTS

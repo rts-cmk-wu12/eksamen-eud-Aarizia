@@ -24,8 +24,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${inter.variable} ${styles.common_font} ${styles.common_color}`}>
         <div className="wrapper">
-          {children}
-          <SiteFooter />
+          <>
+            {children}
+            <SiteFooter />
+          </>
         </div>
       </body>
     </html>
